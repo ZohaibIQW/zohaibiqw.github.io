@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zohaib Iqbal — Marketplace Operations Specialist</title>
+  <meta name="description" content="Zohaib Iqbal is a Marketplace Operations Specialist with 5+ years scaling brands on Amazon, TikTok Shop UK, eBay, and Kogan AU." />
+  <meta name="keywords" content="Zohaib Iqbal, Amazon Operations, TikTok Shop UK, Marketplace Specialist, ecommerce operations, Kogan AU" />
+  <meta property="og:title" content="Zohaib Iqbal — Marketplace Operations Specialist" />
+  <meta property="og:description" content="5+ years scaling Western brands on Amazon, TikTok Shop UK, eBay, and Kogan AU." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:    #0f0f0f;
+      --paper:  #f7f5f0;
+      --accent: #1a472a;
+      --accent2:#2d6a4f;
+      --muted:  #6b6b6b;
+      --rule:   #d8d4cc;
+      --white:  #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 5vw; background: rgba(247,245,240,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 8rem 5vw 5rem; gap: 4rem; }
+    .hero-eyebrow { display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent2); border: 1px solid var(--accent2); padding: 0.3rem 0.8rem; border-radius: 2px; margin-bottom: 1.6rem; }
+    .hero h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2.6rem, 5vw, 4.2rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1.4rem; }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 480px; line-height: 1.75; margin-bottom: 2.4rem; }
+    .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { background: var(--accent); color: var(--white); padding: 0.85rem 1.8rem; border-radius: 3px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+    .btn-secondary { border: 1.5px solid var(--ink); color: var(--ink); padding: 0.85rem 1.8rem; border-radius: 3px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, color 0.2s, transform 0.15s; display: inline-block; }
+    .btn-secondary:hover { background: var(--ink); color: var(--white); transform: translateY(-1px); }
+
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--rule); border: 1.5px solid var(--rule); }
+    .stat-cell { background: var(--paper); padding: 2rem 1.8rem; }
+    .stat-number { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.6rem; color: var(--ink); line-height: 1; margin-bottom: 0.4rem; }
+    .stat-number span { color: var(--accent); }
+    .stat-label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; }
+    .stat-cell.featured { background: var(--accent); grid-column: span 2; }
+    .stat-cell.featured .stat-number, .stat-cell.featured .stat-label { color: var(--white); }
+
+    section { padding: 5.5rem 5vw; }
+    .section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.8rem; }
+    .section-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 1rem; }
+    .section-sub { color: var(--muted); max-width: 560px; font-size: 1rem; line-height: 1.7; margin-bottom: 3rem; }
+    hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0 5vw; }
+
+    .platforms { background: var(--white); }
+    .platform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 2rem; }
+    .platform-item { background: var(--white); padding: 1.6rem 1rem; text-align: center; }
+    .platform-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .platform-name { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
+
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+    .service-card { background: var(--paper); padding: 2.2rem 2rem; transition: background 0.2s; }
+    .service-card:hover { background: var(--white); }
+    .service-number { font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; color: var(--accent2); margin-bottom: 1rem; }
+    .service-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--ink); }
+    .service-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 0.2rem 0.6rem; border-radius: 2px; }
+
+    .about { background: var(--ink); color: var(--white); }
+    .about .section-label { color: #6fcf97; }
+    .about .section-title { color: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-body { font-size: 1rem; color: #ccc; line-height: 1.8; }
+    .about-body p + p { margin-top: 1rem; }
+    .credentials { display: flex; flex-direction: column; gap: 1px; background: #333; border: 1px solid #333; margin-top: 2rem; }
+    .credential-item { background: #1a1a1a; padding: 1.2rem 1.4rem; display: flex; align-items: flex-start; gap: 1rem; }
+    .credential-dot { width: 8px; height: 8px; background: var(--accent2); border-radius: 50%; margin-top: 0.4rem; flex-shrink: 0; }
+    .credential-text { font-size: 0.85rem; color: #ccc; line-height: 1.5; }
+    .credential-text strong { color: var(--white); display: block; font-weight: 500; margin-bottom: 0.1rem; }
+
+    .contact { background: var(--paper); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-links { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 2rem; }
+    .contact-link-item { background: var(--paper); padding: 1.4rem 1.6rem; display: flex; align-items: center; gap: 1.2rem; text-decoration: none; transition: background 0.2s; }
+    .contact-link-item:hover { background: var(--white); }
+    .contact-link-icon { font-size: 1.3rem; width: 2.4rem; text-align: center; flex-shrink: 0; }
+    .contact-link-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.1rem; }
+    .contact-link-value { font-size: 0.95rem; font-weight: 500; color: var(--ink); }
+    .contact-note { font-size: 0.88rem; color: var(--muted); line-height: 1.7; padding: 1.6rem; border: 1px solid var(--rule); background: var(--white); margin-top: 1rem; }
+
+    footer { padding: 2rem 5vw; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
+    .footer-note { font-size: 0.78rem; color: var(--muted); }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding-top: 7rem; gap: 2.5rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Zohaib Iqbal</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-eyebrow">Marketplace Operations Specialist</span>
+    <h1>Scaling Brands on <span>Amazon, TikTok Shop</span> & Beyond</h1>
+    <p class="hero-sub">5+ years operating Western marketplace storefronts end-to-end — from catalog architecture and account health to influencer affiliate pipelines and PPC. Every decision evaluated against net contribution margin, not vanity metrics.</p>
+    <div class="hero-cta-row">
+      <a href="#contact" class="btn-primary">Work With Me</a>
+      <a href="#services" class="btn-secondary">View Services</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-cell">
+      <div class="stat-number">5<span>+</span></div>
+      <div class="stat-label">Years Operating</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">5<span>+</span></div>
+      <div class="stat-label">Marketplaces</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">UK<span>/US</span></div>
+      <div class="stat-label">Primary Markets</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">100<span>%</span></div>
+      <div class="stat-label">Remote Ready</div>
+    </div>
+    <div class="stat-cell featured">
+      <div class="stat-number">Level 1</div>
+      <div class="stat-label">TikTok Shop UK Seller Status — Verified</div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<section class="platforms">
+  <div class="section-label">Platforms</div>
+  <div class="section-title">Where I Operate</div>
+  <div class="platform-grid">
+    <div class="platform-item"><div class="platform-icon">📦</div><div class="platform-name">Amazon</div></div>
+    <div class="platform-item"><div class="platform-icon">🎵</div><div class="platform-name">TikTok Shop</div></div>
+    <div class="platform-item"><div class="platform-icon">🛒</div><div class="platform-name">eBay</div></div>
+    <div class="platform-item"><div class="platform-icon">🦘</div><div class="platform-name">Kogan AU</div></div>
+    <div class="platform-item"><div class="platform-icon">🏪</div><div class="platform-name">Walmart</div></div>
+    <div class="platform-item"><div class="platform-icon">🛍️</div><div class="platform-name">Shopify</div></div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<section id="services">
+  <div class="section-label">What I Do</div>
+  <div class="section-title">Services</div>
+  <p class="section-sub">Operational depth across the full marketplace stack — not surface-level consulting, but hands-on execution that protects margins and account health simultaneously.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-number">01</div>
+      <div class="service-title">Amazon Operations Management</div>
+      <div class="service-desc">End-to-end Seller Central management: listings, catalog architecture, inventory, pricing strategy, account health monitoring (AHR, IPI), A-to-Z claim resolution, and wholesale brand onboarding with LoA procurement.</div>
+      <div class="service-tags"><span class="tag">FBA / FBM</span><span class="tag">Wholesale</span><span class="tag">Account Health</span><span class="tag">PPC</span></div>
+    </div>
+    <div class="service-card">
+      <div class="service-number">02</div>
+      <div class="service-title">TikTok Shop Setup & Affiliate Management</div>
+      <div class="service-desc">Full storefront launch and ongoing management — catalog sync, pricing, fulfillment integration, and creator affiliate pipelines vetted by engagement rate and conversion history, not follower count. Spark Ads amplification included.</div>
+      <div class="service-tags"><span class="tag">TikTok Shop UK</span><span class="tag">Affiliates</span><span class="tag">Spark Ads</span><span class="tag">Level 1 Seller</span></div>
+    </div>
+    <div class="service-card">
+      <div class="service-number">03</div>
+      <div class="service-title">Marketplace Catalog & Listing Optimization</div>
+      <div class="service-desc">Data-accurate product catalog builds across eBay, Kogan AU, and multi-channel setups. GS1/UPC compliance, item specifics, SEO-structured titles, and competitor pricing analysis to protect net contribution margin.</div>
+      <div class="service-tags"><span class="tag">eBay</span><span class="tag">Kogan AU</span><span class="tag">GS1 Compliance</span><span class="tag">Catalog Ops</span></div>
+    </div>
+    <div class="service-card">
+      <div class="service-number">04</div>
+      <div class="service-title">Marketplace Account Audit & Growth Strategy</div>
+      <div class="service-desc">Diagnostic review of existing marketplace accounts: identify suppressed listings, policy risks, margin leaks, and untapped growth vectors. Delivered as a structured report with prioritized action items.</div>
+      <div class="service-tags"><span class="tag">Audit</span><span class="tag">Strategy</span><span class="tag">Compliance</span><span class="tag">Margin Analysis</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<section id="about" class="about">
+  <div class="about-grid">
+    <div>
+      <div class="section-label">About</div>
+      <div class="section-title">Who I Am</div>
+      <div class="about-body">
+        <p>I'm Zohaib Iqbal — a marketplace operations professional based in Faisalabad, Pakistan, with 5+ years of hands-on experience running Western e-commerce storefronts across Amazon, TikTok Shop UK, eBay, Kogan AU, and Walmart.</p>
+        <p>My background spans Amazon wholesale brand relations, TikTok Shop affiliate pipeline management, Meta Ads deployment, and full-cycle dropshipping operations. I think in systems: clean catalog architecture, policy-compliant account structures, and margin-first decision making.</p>
+        <p>I work remotely with Western brands who need an operator — someone who executes daily, monitors account health proactively, and treats their marketplace like a business, not a side project.</p>
+      </div>
+    </div>
+    <div>
+      <div class="credentials">
+        <div class="credential-item">
+          <div class="credential-dot"></div>
+          <div class="credential-text"><strong>TikTok Shop UK — Level 1 Seller</strong>Verified storefront operator via Bulandia Digital</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-dot"></div>
+          <div class="credential-text"><strong>Amazon Wholesale — Eselling Solutions</strong>Multi-account management, LoA procurement, AHR & IPI monitoring</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-dot"></div>
+          <div class="credential-text"><strong>Kogan AU — Elanlinen (Current)</strong>Daily storefront operations, SKU-level pricing, catalog compliance</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-dot"></div>
+          <div class="credential-text"><strong>DigiSkills — Digital Marketing</strong>Certified</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-dot"></div>
+          <div class="credential-text"><strong>DigiSkills — Startup Strategies & Entrepreneurship</strong>Certified</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-dot"></div>
+          <div class="credential-text"><strong>Remote Setup</strong>Stable dedicated connection · Zoom & screen-sharing · 8-hour shift availability</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<section id="contact" class="contact">
+  <div class="contact-grid">
+    <div>
+      <div class="section-label">Contact</div>
+      <div class="section-title">Let's Work Together</div>
+      <p class="section-sub">Available for remote roles and freelance engagements with Western brands. Response within 24 hours.</p>
+      <div class="contact-note">Currently open to: full-time remote marketplace operations roles, freelance account management retainers, and one-time marketplace audits.</div>
+    </div>
+    <div>
+      <div class="contact-links">
+        <a href="mailto:zohaibiqbal.work@gmail.com" class="contact-link-item">
+          <div class="contact-link-icon">✉️</div>
+          <div class="contact-link-info">
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-value">zohaibiqbal.work@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/zohaib-iqbalops" target="_blank" class="contact-link-item">
+          <div class="contact-link-icon">💼</div>
+          <div class="contact-link-info">
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-value">linkedin.com/in/zohaib-iqbalops</div>
+          </div>
+        </a>
+        <a href="https://wa.me/923286085004" target="_blank" class="contact-link-item">
+          <div class="contact-link-icon">📱</div>
+          <div class="contact-link-info">
+            <div class="contact-link-label">WhatsApp</div>
+            <div class="contact-link-value">+92 328 6085004</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Zohaib Iqbal</div>
+  <div class="footer-note">Marketplace Operations Specialist · Faisalabad, Pakistan · Available Remotely</div>
+</footer>
+
+</body>
+</html>
