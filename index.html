@@ -11,6 +11,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%231a472a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='36' fill='white'>Z</text></svg>" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -23,90 +27,143 @@
       --white:  #ffffff;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--paper); color: var(--ink); font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body { background: var(--paper); color: var(--ink); font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 5vw; background: rgba(247,245,240,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes ringPulse {
+      0%,100% { box-shadow: 0 0 0 4px rgba(26,71,42,0.2); }
+      50%      { box-shadow: 0 0 0 8px rgba(26,71,42,0.08); }
+    }
+
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up-d1 { transition-delay: 0.1s; }
+    .fade-up-d2 { transition-delay: 0.2s; }
+    .fade-up-d3 { transition-delay: 0.3s; }
+    .fade-up-d4 { transition-delay: 0.4s; }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 5vw; background: rgba(247,245,240,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); animation: fadeIn 0.6s ease both; }
     .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--ink); }
 
+    /* ── HERO ── */
     .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 8rem 5vw 5rem; gap: 4rem; }
+    .hero-text { animation: fadeUp 0.8s ease 0.2s both; }
     .hero-eyebrow { display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent2); border: 1px solid var(--accent2); padding: 0.3rem 0.8rem; border-radius: 2px; margin-bottom: 1.6rem; }
     .hero h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2.6rem, 5vw, 4.2rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1.4rem; }
     .hero h1 span { color: var(--accent); }
     .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 480px; line-height: 1.75; margin-bottom: 2.4rem; }
     .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary { background: var(--accent); color: var(--white); padding: 0.85rem 1.8rem; border-radius: 3px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
-    .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+    .btn-primary { background: var(--accent); color: var(--white); padding: 0.85rem 1.8rem; border-radius: 3px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; display: inline-block; }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,71,42,0.25); }
     .btn-secondary { border: 1.5px solid var(--ink); color: var(--ink); padding: 0.85rem 1.8rem; border-radius: 3px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, color 0.2s, transform 0.15s; display: inline-block; }
-    .btn-secondary:hover { background: var(--ink); color: var(--white); transform: translateY(-1px); }
+    .btn-secondary:hover { background: var(--ink); color: var(--white); transform: translateY(-2px); }
 
-    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--rule); border: 1.5px solid var(--rule); }
-    .stat-cell { background: var(--paper); padding: 2rem 1.8rem; }
+    /* STAT BLOCK */
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--rule); border: 1.5px solid var(--rule); animation: fadeUp 0.8s ease 0.4s both; }
+    .stat-cell { background: var(--paper); padding: 2rem 1.8rem; transition: background 0.2s; }
+    .stat-cell:hover { background: var(--white); }
     .stat-number { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.6rem; color: var(--ink); line-height: 1; margin-bottom: 0.4rem; }
     .stat-number span { color: var(--accent); }
     .stat-label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; }
     .stat-cell.featured { background: var(--accent); grid-column: span 2; }
     .stat-cell.featured .stat-number, .stat-cell.featured .stat-label { color: var(--white); }
 
+    /* ── SECTION SHARED ── */
     section { padding: 5.5rem 5vw; }
     .section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.8rem; }
     .section-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 1rem; }
     .section-sub { color: var(--muted); max-width: 560px; font-size: 1rem; line-height: 1.7; margin-bottom: 3rem; }
     hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0 5vw; }
 
+    /* ── PLATFORMS ── */
     .platforms { background: var(--white); }
-    .platform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 2rem; }
-    .platform-item { background: var(--white); padding: 1.6rem 1rem; text-align: center; }
-    .platform-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
-    .platform-name { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
+    .platform-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 2rem; }
+    .platform-item { background: var(--white); padding: 1.8rem 1rem; text-align: center; transition: background 0.2s, transform 0.2s; cursor: default; }
+    .platform-item:hover { background: var(--paper); transform: translateY(-3px); }
+    .platform-item svg { width: 44px; height: 44px; display: block; margin: 0 auto 0.7rem; }
+    .platform-name { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
 
+    /* ── SERVICES ── */
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-    .service-card { background: var(--paper); padding: 2.2rem 2rem; transition: background 0.2s; }
-    .service-card:hover { background: var(--white); }
+    .service-card { background: var(--paper); padding: 2.2rem 2rem; transition: background 0.25s, transform 0.25s; }
+    .service-card:hover { background: var(--white); transform: translateY(-2px); }
     .service-number { font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; color: var(--accent2); margin-bottom: 1rem; }
     .service-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--ink); }
     .service-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
     .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 0.2rem 0.6rem; border-radius: 2px; }
 
+    /* ── ABOUT ── */
     .about { background: var(--ink); color: var(--white); }
     .about .section-label { color: #6fcf97; }
     .about .section-title { color: var(--white); }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-left { display: flex; flex-direction: column; gap: 2rem; }
+
+    /* PHOTO */
+    .photo-wrap { position: relative; width: 160px; height: 160px; flex-shrink: 0; }
+    .photo-wrap img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; object-position: center top; display: block; border: 3px solid var(--accent2); animation: ringPulse 3s ease-in-out infinite; }
+    .photo-badge { position: absolute; bottom: 4px; right: 4px; background: var(--accent2); color: white; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.5rem; border-radius: 20px; white-space: nowrap; }
+
     .about-body { font-size: 1rem; color: #ccc; line-height: 1.8; }
     .about-body p + p { margin-top: 1rem; }
     .credentials { display: flex; flex-direction: column; gap: 1px; background: #333; border: 1px solid #333; margin-top: 2rem; }
-    .credential-item { background: #1a1a1a; padding: 1.2rem 1.4rem; display: flex; align-items: flex-start; gap: 1rem; }
+    .credential-item { background: #1a1a1a; padding: 1.2rem 1.4rem; display: flex; align-items: flex-start; gap: 1rem; transition: background 0.2s; }
+    .credential-item:hover { background: #222; }
     .credential-dot { width: 8px; height: 8px; background: var(--accent2); border-radius: 50%; margin-top: 0.4rem; flex-shrink: 0; }
     .credential-text { font-size: 0.85rem; color: #ccc; line-height: 1.5; }
     .credential-text strong { color: var(--white); display: block; font-weight: 500; margin-bottom: 0.1rem; }
 
+    /* ── CONTACT ── */
     .contact { background: var(--paper); }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     .contact-links { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 2rem; }
-    .contact-link-item { background: var(--paper); padding: 1.4rem 1.6rem; display: flex; align-items: center; gap: 1.2rem; text-decoration: none; transition: background 0.2s; }
-    .contact-link-item:hover { background: var(--white); }
+    .contact-link-item { background: var(--paper); padding: 1.4rem 1.6rem; display: flex; align-items: center; gap: 1.2rem; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .contact-link-item:hover { background: var(--white); transform: translateX(4px); }
     .contact-link-icon { font-size: 1.3rem; width: 2.4rem; text-align: center; flex-shrink: 0; }
     .contact-link-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.1rem; }
     .contact-link-value { font-size: 0.95rem; font-weight: 500; color: var(--ink); }
     .contact-note { font-size: 0.88rem; color: var(--muted); line-height: 1.7; padding: 1.6rem; border: 1px solid var(--rule); background: var(--white); margin-top: 1rem; }
 
+    /* ── FOOTER ── */
     footer { padding: 2rem 5vw; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
     .footer-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
     .footer-note { font-size: 0.78rem; color: var(--muted); }
 
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .platform-grid { grid-template-columns: repeat(3, 1fr); }
+    }
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; padding-top: 7rem; gap: 2.5rem; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
       .nav-links { display: none; }
+      .platform-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, .fade-up { transition: none !important; animation: none !important; opacity: 1 !important; transform: none !important; }
+    }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Zohaib Iqbal</a>
   <ul class="nav-links">
@@ -116,6 +173,7 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-text">
     <span class="hero-eyebrow">Marketplace Operations Specialist</span>
@@ -128,11 +186,11 @@
   </div>
   <div class="hero-stats">
     <div class="stat-cell">
-      <div class="stat-number">5<span>+</span></div>
+      <div class="stat-number" data-count="5">5<span>+</span></div>
       <div class="stat-label">Years Operating</div>
     </div>
     <div class="stat-cell">
-      <div class="stat-number">5<span>+</span></div>
+      <div class="stat-number" data-count="5">5<span>+</span></div>
       <div class="stat-label">Marketplaces</div>
     </div>
     <div class="stat-cell">
@@ -152,45 +210,109 @@
 
 <hr class="rule" />
 
+<!-- PLATFORMS -->
 <section class="platforms">
-  <div class="section-label">Platforms</div>
-  <div class="section-title">Where I Operate</div>
+  <div class="section-label fade-up">Platforms</div>
+  <div class="section-title fade-up fade-up-d1">Where I Operate</div>
   <div class="platform-grid">
-    <div class="platform-item"><div class="platform-icon">📦</div><div class="platform-name">Amazon</div></div>
-    <div class="platform-item"><div class="platform-icon">🎵</div><div class="platform-name">TikTok Shop</div></div>
-    <div class="platform-item"><div class="platform-icon">🛒</div><div class="platform-name">eBay</div></div>
-    <div class="platform-item"><div class="platform-icon">🦘</div><div class="platform-name">Kogan AU</div></div>
-    <div class="platform-item"><div class="platform-icon">🏪</div><div class="platform-name">Walmart</div></div>
-    <div class="platform-item"><div class="platform-icon">🛍️</div><div class="platform-name">Shopify</div></div>
+
+    <!-- Amazon -->
+    <div class="platform-item fade-up fade-up-d1">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <text x="50" y="52" text-anchor="middle" dominant-baseline="middle" font-family="Arial Black,sans-serif" font-weight="900" font-size="22" fill="#FF9900">amazon</text>
+        <path d="M18 65 Q50 78 82 65" stroke="#FF9900" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <polygon points="78,60 84,65 78,70" fill="#FF9900"/>
+      </svg>
+      <div class="platform-name">Amazon</div>
+    </div>
+
+    <!-- TikTok -->
+    <div class="platform-item fade-up fade-up-d2">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100" height="100" rx="22" fill="#010101"/>
+        <path d="M67 30 C67 30 69 40 78 42 L78 52 C73 52 68 50 65 47 L65 67 C65 77 57 85 47 85 C37 85 29 77 29 67 C29 57 37 49 47 49 C48.5 49 50 49.2 51.5 49.6 L51.5 60 C50.4 59.6 49.2 59.4 48 59.4 C43.6 59.4 40 63 40 67.4 C40 71.8 43.6 75.4 48 75.4 C52.4 75.4 56 71.8 56 67.4 L56 18 L67 18 L67 30Z" fill="white"/>
+        <path d="M70 31 C70 31 72 41 81 43" stroke="#69C9D0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="platform-name">TikTok Shop</div>
+    </div>
+
+    <!-- eBay -->
+    <div class="platform-item fade-up fade-up-d3">
+      <svg viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg">
+        <text x="4" y="40" font-family="Arial Black,sans-serif" font-weight="900" font-size="46" fill="#E53238">e</text>
+        <text x="32" y="40" font-family="Arial Black,sans-serif" font-weight="900" font-size="46" fill="#0064D2">b</text>
+        <text x="60" y="40" font-family="Arial Black,sans-serif" font-weight="900" font-size="46" fill="#F5AF02">a</text>
+        <text x="88" y="40" font-family="Arial Black,sans-serif" font-weight="900" font-size="46" fill="#86B817">y</text>
+      </svg>
+      <div class="platform-name">eBay</div>
+    </div>
+
+    <!-- Kogan -->
+    <div class="platform-item fade-up fade-up-d1">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100" height="100" rx="14" fill="#CC0000"/>
+        <text x="50" y="58" text-anchor="middle" dominant-baseline="middle" font-family="Arial Black,sans-serif" font-weight="900" font-size="28" fill="white">K</text>
+      </svg>
+      <div class="platform-name">Kogan AU</div>
+    </div>
+
+    <!-- Walmart -->
+    <div class="platform-item fade-up fade-up-d2">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <text x="50" y="55" text-anchor="middle" dominant-baseline="middle" font-family="Arial Black,sans-serif" font-weight="900" font-size="14" fill="#0071CE">Walmart</text>
+        <!-- Spark -->
+        <g transform="translate(50,22) rotate(0)">
+          <ellipse cx="0" cy="-14" rx="3.5" ry="8" fill="#FFC220"/>
+          <ellipse cx="0" cy="-14" rx="3.5" ry="8" fill="#FFC220" transform="rotate(60)"/>
+          <ellipse cx="0" cy="-14" rx="3.5" ry="8" fill="#FFC220" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-14" rx="3.5" ry="8" fill="#FFC220" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-14" rx="3.5" ry="8" fill="#FFC220" transform="rotate(240)"/>
+          <ellipse cx="0" cy="-14" rx="3.5" ry="8" fill="#FFC220" transform="rotate(300)"/>
+        </g>
+      </svg>
+      <div class="platform-name">Walmart</div>
+    </div>
+
+    <!-- Shopify -->
+    <div class="platform-item fade-up fade-up-d3">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M72 22 C71 22 65 22.5 65 22.5 C65 22.5 62 15 54 15 C53 15 52 15.2 51 15.5 C49.5 13 47.5 12 46 12 C34 12 28 27 26.5 35 C22 36.3 18.5 37.3 18 37.5 C15.5 38.2 15.5 38.3 15.2 40.6 L9 85 L60 93 L88 87 L72 22ZM55 19.5 C55 19.5 50 21 48 30 C46 30.5 43.8 31.2 42 31.7 C43.5 24.5 48 20.5 52 18.5 C53 18.8 54 19.1 55 19.5ZM46 14 C47 14 48 14.5 49 15.5 C44 17.5 38.5 23 37 33 C35.5 33.5 34 34 32.5 34.4 C34.5 26 40 14 46 14Z" fill="#96BF48"/>
+        <path d="M65 22.5 L60 93 L88 87 L72 22 C71 22 65 22.5 65 22.5Z" fill="#5E8E3E"/>
+        <path d="M54 15 C53 15 52 15.2 51 15.5 C50 16 49.3 17 49 18 C51 18.8 53.5 20 55 22 C55.7 20 56 17.5 55 16 C54.7 15.3 54.3 15 54 15Z" fill="white"/>
+      </svg>
+      <div class="platform-name">Shopify</div>
+    </div>
+
   </div>
 </section>
 
 <hr class="rule" />
 
+<!-- SERVICES -->
 <section id="services">
-  <div class="section-label">What I Do</div>
-  <div class="section-title">Services</div>
-  <p class="section-sub">Operational depth across the full marketplace stack — not surface-level consulting, but hands-on execution that protects margins and account health simultaneously.</p>
+  <div class="section-label fade-up">What I Do</div>
+  <div class="section-title fade-up fade-up-d1">Services</div>
+  <p class="section-sub fade-up fade-up-d2">Operational depth across the full marketplace stack — not surface-level consulting, but hands-on execution that protects margins and account health simultaneously.</p>
   <div class="services-grid">
-    <div class="service-card">
+    <div class="service-card fade-up fade-up-d1">
       <div class="service-number">01</div>
       <div class="service-title">Amazon Operations Management</div>
       <div class="service-desc">End-to-end Seller Central management: listings, catalog architecture, inventory, pricing strategy, account health monitoring (AHR, IPI), A-to-Z claim resolution, and wholesale brand onboarding with LoA procurement.</div>
       <div class="service-tags"><span class="tag">FBA / FBM</span><span class="tag">Wholesale</span><span class="tag">Account Health</span><span class="tag">PPC</span></div>
     </div>
-    <div class="service-card">
+    <div class="service-card fade-up fade-up-d2">
       <div class="service-number">02</div>
       <div class="service-title">TikTok Shop Setup & Affiliate Management</div>
       <div class="service-desc">Full storefront launch and ongoing management — catalog sync, pricing, fulfillment integration, and creator affiliate pipelines vetted by engagement rate and conversion history, not follower count. Spark Ads amplification included.</div>
       <div class="service-tags"><span class="tag">TikTok Shop UK</span><span class="tag">Affiliates</span><span class="tag">Spark Ads</span><span class="tag">Level 1 Seller</span></div>
     </div>
-    <div class="service-card">
+    <div class="service-card fade-up fade-up-d3">
       <div class="service-number">03</div>
       <div class="service-title">Marketplace Catalog & Listing Optimization</div>
       <div class="service-desc">Data-accurate product catalog builds across eBay, Kogan AU, and multi-channel setups. GS1/UPC compliance, item specifics, SEO-structured titles, and competitor pricing analysis to protect net contribution margin.</div>
       <div class="service-tags"><span class="tag">eBay</span><span class="tag">Kogan AU</span><span class="tag">GS1 Compliance</span><span class="tag">Catalog Ops</span></div>
     </div>
-    <div class="service-card">
+    <div class="service-card fade-up fade-up-d4">
       <div class="service-number">04</div>
       <div class="service-title">Marketplace Account Audit & Growth Strategy</div>
       <div class="service-desc">Diagnostic review of existing marketplace accounts: identify suppressed listings, policy risks, margin leaks, and untapped growth vectors. Delivered as a structured report with prioritized action items.</div>
@@ -201,18 +323,25 @@
 
 <hr class="rule" />
 
+<!-- ABOUT -->
 <section id="about" class="about">
   <div class="about-grid">
-    <div>
-      <div class="section-label">About</div>
-      <div class="section-title">Who I Am</div>
-      <div class="about-body">
+    <div class="about-left">
+      <div>
+        <div class="section-label fade-up">About</div>
+        <div class="section-title fade-up fade-up-d1">Who I Am</div>
+      </div>
+      <div class="photo-wrap fade-up fade-up-d2">
+        <img src="zohaib.jpg" alt="Zohaib Iqbal — Marketplace Operations Specialist" />
+        <span class="photo-badge">Available Remotely</span>
+      </div>
+      <div class="about-body fade-up fade-up-d3">
         <p>I'm Zohaib Iqbal — a marketplace operations professional based in Faisalabad, Pakistan, with 5+ years of hands-on experience running Western e-commerce storefronts across Amazon, TikTok Shop UK, eBay, Kogan AU, and Walmart.</p>
         <p>My background spans Amazon wholesale brand relations, TikTok Shop affiliate pipeline management, Meta Ads deployment, and full-cycle dropshipping operations. I think in systems: clean catalog architecture, policy-compliant account structures, and margin-first decision making.</p>
         <p>I work remotely with Western brands who need an operator — someone who executes daily, monitors account health proactively, and treats their marketplace like a business, not a side project.</p>
       </div>
     </div>
-    <div>
+    <div class="fade-up fade-up-d2">
       <div class="credentials">
         <div class="credential-item">
           <div class="credential-dot"></div>
@@ -225,6 +354,10 @@
         <div class="credential-item">
           <div class="credential-dot"></div>
           <div class="credential-text"><strong>Kogan AU — Elanlinen (Current)</strong>Daily storefront operations, SKU-level pricing, catalog compliance</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-dot"></div>
+          <div class="credential-text"><strong>Meta Ads — Khalis Hatti</strong>Facebook & Instagram campaigns, post-iOS14 broad targeting, CPA optimisation</div>
         </div>
         <div class="credential-item">
           <div class="credential-dot"></div>
@@ -245,15 +378,16 @@
 
 <hr class="rule" />
 
+<!-- CONTACT -->
 <section id="contact" class="contact">
   <div class="contact-grid">
-    <div>
+    <div class="fade-up">
       <div class="section-label">Contact</div>
       <div class="section-title">Let's Work Together</div>
       <p class="section-sub">Available for remote roles and freelance engagements with Western brands. Response within 24 hours.</p>
       <div class="contact-note">Currently open to: full-time remote marketplace operations roles, freelance account management retainers, and one-time marketplace audits.</div>
     </div>
-    <div>
+    <div class="fade-up fade-up-d2">
       <div class="contact-links">
         <a href="mailto:zohaibiqbal.work@gmail.com" class="contact-link-item">
           <div class="contact-link-icon">✉️</div>
@@ -281,10 +415,25 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-name">Zohaib Iqbal</div>
   <div class="footer-note">Marketplace Operations Specialist · Faisalabad, Pakistan · Available Remotely</div>
 </footer>
+
+<script>
+  // Scroll-triggered fade-up
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
